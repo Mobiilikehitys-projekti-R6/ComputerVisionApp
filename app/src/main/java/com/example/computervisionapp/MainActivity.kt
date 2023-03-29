@@ -18,15 +18,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val img: ImageView = findViewById(R.id.imageToLabel)
-// assets folder image file name with extension
-        val fileName = "flower1.jpg"
-// get bitmap from assets folder
-        val bitmap: Bitmap? = assetsToBitmap(fileName)
+        val txtOutput : TextView = findViewById(R.id.txtOutput)
+        val btn: Button = findViewById(R.id.btnTest)
+
+        // get a list of all file names in the assets folder
+        val fileNames = assets.list("")
+
+        // find the first image file in the list
+        val fileName = fileNames?.firstOrNull { it.endsWith(".jpg") || it.endsWith(".jpeg") }
+
+        // load the bitmap from the first image file
+        val bitmap: Bitmap? = fileName?.let { assetsToBitmap(it) }
         bitmap?.apply {
             img.setImageBitmap(this)
         }
-        val txtOutput : TextView = findViewById(R.id.txtOutput)
-        val btn: Button = findViewById(R.id.btnTest)
+
         btn.setOnClickListener {
             val labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
             val image = InputImage.fromBitmap(bitmap!!, 0)

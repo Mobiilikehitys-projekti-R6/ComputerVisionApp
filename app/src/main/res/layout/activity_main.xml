@@ -13,16 +13,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+                android:id="@+id/btnSelect"
+                android:layout_width="167dp"
+                android:layout_height="wrap_content"
+                android:text="Select image"
+                android:layout_gravity="center"/>
         <ImageView
             android:id="@+id/imageToLabel"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <Button
-            android:id="@+id/btnTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Label Image"
-            android:layout_gravity="center"/>
+                android:id="@+id/btnTest"
+                android:layout_width="167dp"
+                android:layout_height="wrap_content"
+                android:text="Label Image"
+                android:layout_gravity="center"/>
         <TextView
             android:id="@+id/txtOutput"
             android:layout_width="match_parent"
